@@ -29,7 +29,8 @@ export function CatImage({ url }: CatImageProps) {
     <div className={styles.page}>
       {/* 🔘 ボタン：クリックすると新しい猫画像を取得 */}
       <button onClick={refreshImage} className={styles.button}>
-        one more cat
+feature/update-button-text
+        🐱 新しい猫ちゃんを見る
       </button>
       
       {/* 🖼️ 画像表示エリア */}
