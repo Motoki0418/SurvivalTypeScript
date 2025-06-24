@@ -1,23 +1,25 @@
-// ①このファイルは、猫の画像を取得するための関数を定義するファイルです
+// 🌐 API通信：猫の画像を取得する関数
+// The Cat APIというサービスから、ランダムな猫の画像情報をもらってくる
 
-// 画像情報の型定義
+// 📋 画像情報の型定義（APIから返ってくるデータの形を決める）
 type Image = {
-  url: string;
+  url: string; // 画像のURL（インターネット上の住所）
 };
 
-// ②画像を取得する関数を定義します
-// exportをつけることで、他のファイルからこの関数を使えるようになります
-// asyncをつけることで、時間のかかる処理（画像の取得）を待つことができます
+// 🐱 猫画像取得関数
+// exportで他のファイルからも使えるようにする
+// async/awaitで「時間のかかる処理を待つ」ことができる
 export async function fetchImage(): Promise<Image> {
-  // ③The Cat APIというサービスから猫の画像情報を取得します
-  // fetchは、インターネットから情報を取ってくる命令です
+  // 🌍 The Cat APIにリクエストを送信
+  // fetch = インターネットからデータを取ってくる命令
   const response = await fetch("https://api.thecatapi.com/v1/images/search");
   
-  // ④取得した情報をJavaScriptで使える形（オブジェクト）に変換します
+  // 📦 取得したデータをJavaScriptで使える形に変換
+  // .json() = 文字列データをオブジェクトに変換
   const data = await response.json();
   
-  // ⑤最初の画像の情報（URLなど）を返します
-  // data[0]は、配列の最初の要素を取得する方法です
+  // 🎯 配列の最初の画像情報を返す
+  // APIは配列で返してくるので、[0]で最初の1つを取得
   console.log("fetchImage: 画像情報を取得しました", data);
   return data[0];
 }
